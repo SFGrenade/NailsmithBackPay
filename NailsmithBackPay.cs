@@ -26,29 +26,29 @@ namespace NailsmithBackPay
 
             var ns = GameObject.Find("Nailsmith Cliff NPC");
 
-            var prefabEDE = GameObject.Find("Ruins Sentry 1").GetComponent<EnemyDeathEffects>();
-            var copyToEDE = ns.AddComponent<EnemyDeathEffects>();
+            var prefabEde = GameObject.Find("Ruins Sentry 1").GetComponent<EnemyDeathEffects>();
+            var copyToEde = ns.AddComponent<EnemyDeathEffects>();
 
-            foreach (var field in prefabEDE.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
-                field.SetValue(copyToEDE, field.GetValue(prefabEDE));
-            copyToEDE.SetAttr("corpse", (GameObject) null);
-            copyToEDE.SetAttr("corpsePrefab", (GameObject) null);
-            copyToEDE.SetAttr("audioPlayerPrefab", (AudioSource) null);
-            copyToEDE.SetAttr("deathWaveInfectedPrefab", new GameObject());
-            copyToEDE.SetAttr("spatterOrangePrefab", new GameObject());
-            copyToEDE.SetAttr("deathPuffMedPrefab", new GameObject());
+            foreach (var field in prefabEde.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
+                field.SetValue(copyToEde, field.GetValue(prefabEde));
+            copyToEde.SetAttr("corpse", (GameObject) null);
+            copyToEde.SetAttr("corpsePrefab", (GameObject) null);
+            copyToEde.SetAttr("audioPlayerPrefab", (AudioSource) null);
+            copyToEde.SetAttr("deathWaveInfectedPrefab", new GameObject());
+            copyToEde.SetAttr("spatterOrangePrefab", new GameObject());
+            copyToEde.SetAttr("deathPuffMedPrefab", new GameObject());
 
-            var prefabHM = GameObject.Find("Ruins Sentry 1").GetComponent<HealthManager>();
-            var copyToHM = ns.AddComponent<HealthManager>();
+            var prefabHm = GameObject.Find("Ruins Sentry 1").GetComponent<HealthManager>();
+            var copyToHm = ns.AddComponent<HealthManager>();
 
-            foreach (var field in prefabHM.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
-                field.SetValue(copyToHM, field.GetValue(prefabHM));
-            copyToHM.SetAttr("hitEffectReceiver", (IHitEffectReciever) null);
-            copyToHM.SetAttr("megaFlingGeo", true);
-            copyToHM.hp = 1;
-            copyToHM.SetGeoSmall(10);
-            copyToHM.SetGeoMedium(3);
-            copyToHM.SetGeoLarge(2);
+            foreach (var field in prefabHm.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
+                field.SetValue(copyToHm, field.GetValue(prefabHm));
+            copyToHm.SetAttr("hitEffectReceiver", (IHitEffectReciever) null);
+            copyToHm.SetAttr("megaFlingGeo", true);
+            copyToHm.hp = 1;
+            copyToHm.SetGeoSmall(10);
+            copyToHm.SetGeoMedium(3);
+            copyToHm.SetGeoLarge(2);
 
             var fsm = ns.LocateMyFSM("Conversation Control");
             fsm.GetAction<PlayerDataBoolTest>("Idle", 0).boolName = "hasDash";
